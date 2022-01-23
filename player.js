@@ -48,6 +48,8 @@ class Player {
                 const pt = ray.cast(wall);
                 if (pt) {
                     let d = p5.Vector.dist(this.pos, pt);
+                    const a = p5.Vector.fromAngle(ray.angle).heading() - p5.Vector.fromAngle(this.dir_angle).heading();
+                    d *= Math.cos(a);
                     if (d < record) {
                         record = d;
                         closest = pt;
